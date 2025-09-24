@@ -10,6 +10,7 @@ import Image from "next/image"
 const servicios = [
   {
     id: 1,
+    slug: "levantamientos-topograficos",
     titulo: "Levantamientos Topográficos Planimétricos Y Altimétricos",
     descripcion: "Utilizamos tecnología de vanguardia como estaciones totales y receptores GPS de doble frecuencia para obtener mediciones precisas del terreno en coordenadas planimétricas y altimétricas.",
     icono: MapPin,
@@ -18,6 +19,7 @@ const servicios = [
   },
   {
     id: 2,
+    slug: "topografia-con-drones",
     titulo: "Topografía Con Drones",
     descripcion: "Levantamientos topográficos con drones equipados con cámaras y sensores de alta resolución para generar modelos digitales del terreno de mayor calidad y precisión.",
     icono: Camera,
@@ -26,6 +28,7 @@ const servicios = [
   },
   {
     id: 3,
+    slug: "batimetria-diseno-vias",
     titulo: "Batimetría–Diseño De Vías-Diseño De Niveles Urbanísticos",
     descripcion: "Acompañamiento técnico y profesional en estudios urbanísticos, diseños de vías e hidrología con enfoque personalizado para cada proyecto de intervención.",
     icono: Mountain,
@@ -34,6 +37,7 @@ const servicios = [
   },
   {
     id: 4,
+    slug: "calculo-volumen-fotogrametria",
     titulo: "Cálculo De Volumen–Fotogrametría",
     descripcion: "Servicio de fotogrametría para evaluar y definir con alta precisión las características y dimensiones de objetos o áreas utilizando imágenes de alta definición.",
     icono: Calculator,
@@ -42,6 +46,7 @@ const servicios = [
   },
   {
     id: 5,
+    slug: "elaboracion-planos",
     titulo: "Elaboración De Planos Topográficos, Arquitectónicos Y Estructurales",
     descripcion: "Creación de planos profesionales estandarizados utilizando software de alto nivel, entregados en formato digital y físico con presentación impecable.",
     icono: FileText,
@@ -50,6 +55,7 @@ const servicios = [
   },
   {
     id: 6,
+    slug: "posicionamiento-gps-magna-sirgas",
     titulo: "Posicionamiento De Placas GPS Sistema De Referencia MAGNA SIRGAS",
     descripcion: "Sistema de referencia oficial del país que garantiza precisión y coherencia de coordenadas geográficas a través de técnicas de posicionamiento estandarizadas.",
     icono: Navigation,
@@ -58,6 +64,7 @@ const servicios = [
   },
   {
     id: 7,
+    slug: "trazado-alcantarillado-acueducto",
     titulo: "Trazado De Alcantarillado Y Acueducto",
     descripcion: "Acompañamiento técnico y profesional en el trazo de redes de alcantarillado y acueducto cumpliendo con los más altos estándares profesionales.",
     icono: Wrench,
@@ -130,7 +137,7 @@ export function ServiciosDestacadosSection() {
                       variant="outline" 
                       className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground group-hover:border-secondary group-hover:text-secondary group-hover:hover:bg-secondary group-hover:hover:text-secondary-foreground transition-all duration-300 mt-auto"
                     >
-                      <Link href={`/servicios/${servicio.id}`}>
+                      <Link href={`/servicios/${servicio.slug}`}>
                         Ver Detalles
                       </Link>
                     </Button>
@@ -187,7 +194,7 @@ export function ServiciosDestacadosSection() {
                       variant="outline" 
                       className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground group-hover:border-secondary group-hover:text-secondary group-hover:hover:bg-secondary group-hover:hover:text-secondary-foreground transition-all duration-300 mt-auto"
                     >
-                      <Link href={`/servicios/${servicio.id}`}>
+                      <Link href={`/servicios/${servicio.slug}`}>
                         Ver Detalles
                       </Link>
                     </Button>

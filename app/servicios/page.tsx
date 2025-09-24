@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, Clock, Users, Award, ArrowRight, CheckCircle } from 'lucide-react'
+import { MapPin, Clock, Users, Award, ArrowRight, CheckCircle, Eye, Phone } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Servicios de Topografía | PECVA - Profesionales en Topografía',
@@ -24,7 +24,8 @@ const servicios = [
     descripcion: "Utilizamos tecnología de vanguardia como estaciones totales y receptores GPS de doble frecuencia para obtener mediciones precisas del terreno en coordenadas planimétricas y altimétricas.",
     imagen: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=surveyor%20using%20total%20station%20and%20GPS%20equipment%20for%20planimetric%20altimetric%20measurements%2C%20professional%20topographic%20survey&image_size=square_hd",
     caracteristicas: ["Estaciones totales", "GPS doble frecuencia", "Mapas detallados"],
-    categoria: "Topografía"
+    categoria: "Topografía",
+    slug: "levantamientos-topograficos"
   },
   {
     id: 2,
@@ -32,7 +33,8 @@ const servicios = [
     descripcion: "Levantamientos topográficos con drones equipados con cámaras y sensores de alta resolución para generar modelos digitales del terreno de mayor calidad y precisión.",
     imagen: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20drone%20with%20high%20resolution%20camera%20and%20sensors%20for%20topographic%20surveying%2C%20aerial%20mapping%20technology&image_size=square_hd",
     caracteristicas: ["Drones profesionales", "Sensores alta resolución", "Modelos digitales 3D"],
-    categoria: "Aéreo"
+    categoria: "Aéreo",
+    slug: "topografia-con-drones"
   },
   {
     id: 3,
@@ -40,7 +42,8 @@ const servicios = [
     descripcion: "Acompañamiento técnico y profesional en estudios urbanísticos, diseños de vías e hidrología con enfoque personalizado para cada proyecto de intervención.",
     imagen: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=bathymetric%20survey%20and%20urban%20planning%20design%2C%20road%20design%20and%20hydraulic%20engineering%2C%20professional%20technical%20work&image_size=square_hd",
     caracteristicas: ["Estudios urbanísticos", "Diseño de vías", "Análisis hidrológico"],
-    categoria: "Urbanismo"
+    categoria: "Urbanismo",
+    slug: "batimetria-diseno-vias"
   },
   {
     id: 4,
@@ -48,7 +51,8 @@ const servicios = [
     descripcion: "Servicio de fotogrametría para evaluar y definir con alta precisión las características y dimensiones de objetos o áreas utilizando imágenes de alta definición.",
     imagen: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=photogrammetry%20volume%20calculation%20with%20high%20definition%20images%2C%203D%20modeling%20and%20precise%20measurements&image_size=square_hd",
     caracteristicas: ["Imágenes alta definición", "Modelos tridimensionales", "Cálculos volumétricos"],
-    categoria: "Fotogrametría"
+    categoria: "Fotogrametría",
+    slug: "calculo-volumen-fotogrametria"
   },
   {
     id: 5,
@@ -56,7 +60,8 @@ const servicios = [
     descripcion: "Creación de planos profesionales estandarizados utilizando software de alto nivel, entregados en formato digital y físico con presentación impecable.",
     imagen: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20architectural%20and%20structural%20plans%20creation%2C%20CAD%20software%20technical%20drawing%2C%20engineering%20documentation&image_size=square_hd",
     caracteristicas: ["Software especializado", "Formato digital y físico", "Estándares profesionales"],
-    categoria: "Planos"
+    categoria: "Planos",
+    slug: "elaboracion-planos"
   },
   {
     id: 6,
@@ -64,7 +69,8 @@ const servicios = [
     descripcion: "Sistema de referencia oficial del país que garantiza precisión y coherencia de coordenadas geográficas a través de técnicas de posicionamiento estandarizadas.",
     imagen: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=GPS%20positioning%20system%20MAGNA%20SIRGAS%20reference%20plates%2C%20official%20coordinate%20system%20surveying%20equipment&image_size=square_hd",
     caracteristicas: ["Sistema oficial nacional", "Coordenadas precisas", "Técnicas estandarizadas"],
-    categoria: "GPS"
+    categoria: "GPS",
+    slug: "posicionamiento-gps-magna-sirgas"
   },
   {
     id: 7,
@@ -72,7 +78,8 @@ const servicios = [
     descripcion: "Acompañamiento técnico y profesional en el trazo de redes de alcantarillado y acueducto cumpliendo con los más altos estándares profesionales.",
     imagen: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=sewer%20and%20aqueduct%20network%20layout%20design%2C%20professional%20technical%20assistance%20infrastructure%20planning&image_size=square_hd",
     caracteristicas: ["Redes de alcantarillado", "Sistemas de acueducto", "Estándares profesionales"],
-    categoria: "Infraestructura"
+    categoria: "Infraestructura",
+    slug: "trazado-alcantarillado-acueducto"
   }
 ]
 
@@ -149,12 +156,20 @@ export default function ServiciosPage() {
                   </div>
                   
                   <div className="pt-4 border-t mt-auto">
-                    <Button asChild className="w-full bg-primary hover:bg-primary/90">
-                      <Link href="/cotizacion">
-                        Cotizar
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button asChild variant="outline" className="flex-1">
+                        <Link href={`/servicios/${servicio.slug}`}>
+                          Ver Detalles
+                          <Eye className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                      <Button asChild className="flex-1 bg-primary hover:bg-primary/90">
+                        <Link href="/cotizacion">
+                          Cotizar
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -211,25 +226,66 @@ export default function ServiciosPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <section className="py-24 relative overflow-hidden">
+        {/* Modern gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/90 via-transparent to-green-500/20" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.3),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(34,197,94,0.2),transparent_50%)]" />
+        </div>
+
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-24 h-24 bg-green-400/10 rounded-full blur-xl animate-pulse" />
+        </div>
+
+        <div className="container relative z-10 text-center">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
             ¿Listo para iniciar su proyecto?
           </h2>
-          <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed">
             Contáctenos hoy mismo y reciba una cotización personalizada para su proyecto topográfico
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
-              <Link href="/cotizacion">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Button 
+              asChild 
+              size="lg" 
+              className="group bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white border-0 shadow-2xl hover:shadow-green-500/25 transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl"
+            >
+              <Link href="/cotizacion" className="flex items-center">
+                <MapPin className="mr-3 h-5 w-5" />
                 Solicitar Cotización
+                <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <Link href="/contacto">
+            <Button 
+              asChild 
+              size="lg" 
+              variant="outline" 
+              className="group bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-blue-700 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl"
+            >
+              <Link href="/contacto" className="flex items-center">
+                <Phone className="mr-3 h-5 w-5" />
                 Contactar Ahora
               </Link>
             </Button>
+          </div>
+          
+          {/* Additional info */}
+          <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-blue-100">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span className="text-sm font-medium">Respuesta en 24 horas</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span className="text-sm font-medium">Cotización gratuita</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span className="text-sm font-medium">15+ años de experiencia</span>
+            </div>
           </div>
         </div>
       </section>

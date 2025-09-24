@@ -15,7 +15,7 @@ export function Footer() {
                 alt="PECVA Logo" 
                 width={70} 
                 height={70} 
-                className="h-auto w-[70px] transition-transform duration-300 group-hover:scale-110"
+                className="h-auto w-[70px] transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
               />
             </Link>
             <p className="text-sm text-muted-foreground">
@@ -81,21 +81,21 @@ export function Footer() {
             <h3 className="text-sm font-semibold mb-4">Servicios</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/servicios/topografia-urbana" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Topografía Urbana
+                <Link href="/servicios/levantamientos-topograficos" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Levantamientos Topográficos
                 </Link>
               </li>
               <li>
-                <Link href="/servicios/batimetria" className="text-muted-foreground hover:text-foreground transition-colors">Batimetría</Link>
+                <Link href="/servicios/batimetria-diseno-vias" className="text-muted-foreground hover:text-foreground transition-colors">Batimetría y Diseño de Vías</Link>
               </li>
               <li>
-                <Link href="/servicios/fotogrametria" className="text-muted-foreground hover:text-foreground transition-colors">Fotogrametría</Link>
+                <Link href="/servicios/calculo-volumen-fotogrametria" className="text-muted-foreground hover:text-foreground transition-colors">Cálculo de Volumen</Link>
               </li>
               <li>
-                <Link href="/servicios/replanteos" className="text-muted-foreground hover:text-foreground transition-colors">Replanteos</Link>
+                <Link href="/servicios/elaboracion-planos" className="text-muted-foreground hover:text-foreground transition-colors">Elaboración de Planos</Link>
               </li>
               <li>
-                <Link href="/cotizacion" className="text-muted-foreground hover:text-foreground transition-colors">Cotización</Link>
+                <Link href="/servicios/topografia-con-drones" className="text-muted-foreground hover:text-foreground transition-colors">Topografía con Drones</Link>
               </li>
             </ul>
           </div>

@@ -14,17 +14,17 @@ export const metadata: Metadata = {
 
 export default function ContactoPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
       <section className="relative py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex items-center justify-center mb-6">
             <MessageSquare className="h-12 w-12 text-blue-600 mr-4" />
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
               Contáctanos
             </h1>
           </div>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Estamos aquí para ayudarte con tus proyectos de topografía. 
             Contáctanos y recibe atención personalizada de nuestros expertos.
           </p>
@@ -159,8 +159,8 @@ export default function ContactoPage() {
                     <span className="text-green-600 font-medium">24/7</span>
                   </div>
                   
-                  <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                    <p className="text-sm text-blue-800">
+                  <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <p className="text-sm text-blue-800 dark:text-blue-200">
                       <strong>Nota:</strong> Para proyectos urgentes o emergencias, 
                       estamos disponibles las 24 horas del día.
                     </p>
@@ -189,9 +189,9 @@ export default function ContactoPage() {
       </section>
 
       {/* Sección de Servicios Rápidos */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-white dark:bg-gray-900">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
             ¿En qué podemos ayudarte?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

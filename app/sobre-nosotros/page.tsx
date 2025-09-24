@@ -3,7 +3,8 @@ import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Award, Users, Calendar, MapPin, Target, Zap, Mail, Phone } from 'lucide-react'
+import { AnimatedSection } from '@/components/ui/animated-section'
+import { Award, Users, Calendar, MapPin, Target, Zap, Mail, Phone, ArrowRight, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -283,29 +284,79 @@ export default function SobreNosotrosPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-primary/80">
-        <div className="container mx-auto px-4 text-center text-primary-foreground">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            ¿Listo para trabajar con nosotros?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Contáctanos hoy mismo y descubre por qué somos la opción preferida 
-            para servicios topográficos profesionales.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
-              <Link href="/cotizacion">
-                Solicitar Cotización
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <Link href="/contacto">
-                Contactar Ahora
-              </Link>
-            </Button>
+      <AnimatedSection>
+        <section className="relative py-20 overflow-hidden">
+          {/* Fondo con gradientes dinámicos */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-blue-600">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            <div className="absolute top-0 left-0 w-full h-full">
+              <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl animate-pulse" />
+              <div className="absolute bottom-20 right-20 w-40 h-40 bg-blue-300/20 rounded-full blur-2xl animate-pulse delay-1000" />
+              <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-green-300/15 rounded-full blur-lg animate-pulse delay-500" />
+            </div>
           </div>
-        </div>
-      </section>
+          
+          <div className="relative container mx-auto px-4 text-center text-white">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                ¿Listo para trabajar con{' '}
+                <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                  nosotros?
+                </span>
+              </h2>
+              <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-blue-50">
+                Contáctanos hoy mismo y descubre por qué somos la opción preferida 
+                para servicios topográficos profesionales.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <Button 
+                  asChild 
+                  size="lg" 
+                  className="group relative bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white border-0 shadow-2xl hover:shadow-green-500/25 transform hover:scale-105 transition-all duration-300 px-8 py-6 text-lg font-semibold rounded-xl overflow-hidden"
+                >
+                  <Link href="/cotizacion" className="flex items-center gap-3">
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                    Solicitar Cotización
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </Button>
+                
+                <Button 
+                  asChild 
+                  variant="outline" 
+                  size="lg" 
+                  className="group relative bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-primary shadow-xl hover:shadow-white/25 transform hover:scale-105 transition-all duration-300 px-8 py-6 text-lg font-semibold rounded-xl overflow-hidden"
+                >
+                  <Link href="/contacto" className="flex items-center gap-3">
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                    Contactar Ahora
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </Button>
+              </div>
+              
+              {/* Elementos decorativos */}
+              <div className="mt-16 flex justify-center items-center gap-8 text-blue-100">
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <span>Respuesta en 24h</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-300" />
+                  <span>Cotización gratuita</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse delay-700" />
+                  <span>Asesoría especializada</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
     </div>
   )
 }

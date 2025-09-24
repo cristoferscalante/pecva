@@ -157,8 +157,8 @@ export function HeroSection() {
               className="relative"
             >
               <motion.img
-                src="/images/hero.png"      
-                alt="Experto en ciberseguridad"
+                src="https://tos-maliva-i-8h5vqs2gkl-us.us/7502509519029863430/image/1758741154105_sskiyumbvql0_png_80x107"      
+                alt="Logo Explore"
                 className={`w-full h-auto transform transition-all duration-500 ease-out hover:scale-110 cursor-pointer ${
                   isGlowing 
                     ? 'drop-shadow-[0_0_20px_rgba(16,185,129,0.8)] filter brightness-110 contrast-110' 

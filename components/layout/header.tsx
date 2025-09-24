@@ -30,10 +30,13 @@ export function Header() {
   ]
 
   const serviciosItems = [
-    { name: "Topografía Urbana", href: "/servicios/topografia-urbana" },
-    { name: "Batimetría", href: "/servicios/batimetria" },
-    { name: "Fotogrametría", href: "/servicios/fotogrametria" },
-    { name: "Replanteos", href: "/servicios/replanteos" },
+    { name: "Levantamientos Topográficos Planimétricos Y Altimétricos", href: "/servicios/levantamientos-topograficos" },
+    { name: "Topografía Con Drones", href: "/servicios/topografia-con-drones" },
+    { name: "Batimetría–Diseño De Vías-Diseño De Niveles Urbanísticos", href: "/servicios/batimetria-diseno-vias" },
+    { name: "Cálculo De Volumen–Fotogrametría", href: "/servicios/calculo-volumen-fotogrametria" },
+    { name: "Elaboración De Planos Topográficos, Arquitectónicos Y Estructurales", href: "/servicios/elaboracion-planos" },
+    { name: "Posicionamiento De Placas GPS Sistema De Referencia MAGNA SIRGAS", href: "/servicios/posicionamiento-gps-magna-sirgas" },
+    { name: "Trazado De Alcantarillado Y Acueducto", href: "/servicios/trazado-alcantarillado-acueducto" },
   ]
 
   return (
@@ -46,7 +49,7 @@ export function Header() {
             alt="PECVA Logo" 
             width={60} 
             height={60} 
-            className="h-auto w-[60px] transition-transform duration-300 group-hover:scale-110"
+            className="h-auto w-[60px] transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
           />
         </Link>
 
