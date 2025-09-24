@@ -1,9 +1,21 @@
 import { supabase } from '@/lib/supabase'
 import type { Product, ProductImage } from '@/types'
 
+// Helper function to check if Supabase is properly configured
+function isSupabaseConfigured(): boolean {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  return !!(url && key && url !== 'https://placeholder.supabase.co' && key !== 'placeholder-anon-key')
+}
 
 export class ProductService {
   static async getAllProducts(): Promise<Product[]> {
+    // Return empty array if Supabase is not configured
+    if (!isSupabaseConfigured()) {
+      console.warn('Supabase not configured, returning empty products array')
+      return []
+    }
+
     try {
       const { data: products, error } = await supabase
         .from('products')
@@ -21,7 +33,7 @@ export class ProductService {
 
       if (error) {
         console.error('Error fetching products:', error)
-        throw new Error('Failed to fetch products')
+        return []
       }
 
       // Transformar los datos para que coincidan con el tipo Product
@@ -33,11 +45,17 @@ export class ProductService {
       return transformedProducts
     } catch (error) {
       console.error('Error in getAllProducts:', error)
-      throw error
+      return []
     }
   }
 
   static async getProductById(id: string): Promise<Product | null> {
+    // Return null if Supabase is not configured
+    if (!isSupabaseConfigured()) {
+      console.warn('Supabase not configured, returning null for product')
+      return null
+    }
+
     try {
       const { data: product, error } = await supabase
         .from('products')
@@ -60,7 +78,7 @@ export class ProductService {
           return null
         }
         console.error('Error fetching product:', error)
-        throw new Error('Failed to fetch product')
+        return null
       }
 
       if (!product) return null
@@ -74,11 +92,17 @@ export class ProductService {
       return transformedProduct
     } catch (error) {
       console.error('Error in getProductById:', error)
-      throw error
+      return null
     }
   }
 
   static async getFeaturedProducts(limit: number = 3): Promise<Product[]> {
+    // Return empty array if Supabase is not configured
+    if (!isSupabaseConfigured()) {
+      console.warn('Supabase not configured, returning empty featured products array')
+      return []
+    }
+
     try {
       const { data: products, error } = await supabase
         .from('products')
@@ -98,7 +122,7 @@ export class ProductService {
 
       if (error) {
         console.error('Error fetching featured products:', error)
-        throw new Error('Failed to fetch featured products')
+        return []
       }
 
       // Transformar los datos para que coincidan con el tipo Product
@@ -110,11 +134,17 @@ export class ProductService {
       return transformedProducts
     } catch (error) {
       console.error('Error in getFeaturedProducts:', error)
-      throw error
+      return []
     }
   }
 
   static async getProductsByCategory(category: string): Promise<Product[]> {
+    // Return empty array if Supabase is not configured
+    if (!isSupabaseConfigured()) {
+      console.warn('Supabase not configured, returning empty products by category array')
+      return []
+    }
+
     try {
       const { data: products, error } = await supabase
         .from('products')
@@ -133,7 +163,7 @@ export class ProductService {
 
       if (error) {
         console.error('Error fetching products by category:', error)
-        throw new Error('Failed to fetch products by category')
+        return []
       }
 
       // Transformar los datos para que coincidan con el tipo Product
@@ -145,7 +175,7 @@ export class ProductService {
       return transformedProducts
     } catch (error) {
       console.error('Error in getProductsByCategory:', error)
-      throw error
+      return []
     }
   }
 }
